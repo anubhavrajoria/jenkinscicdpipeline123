@@ -43,19 +43,19 @@ resource "google_compute_firewall" "firewall_vpc_1" {
 
 # Allow SSH & ICMP in VPC-2
 resource "google_compute_firewall" "firewall_vpc_2" {
-    name = "allow-ssh-icmp-vpc-2"
-    network = google_compute_network.vpc_2.self_link
+  name    = "allow-ssh-icmp-vpc-2"
+  network = google_compute_network.vpc_2.self_link
 
-    allow {
-        protocol = "icmp"
-    }
+  allow {
+    protocol = "icmp"
+  }
 
-    allow {
-        protocol = "tcp"
-        ports = ["22"]
-    }
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
 
-    source_ranges = ["0.0.0.0/0"]
+  source_ranges = ["0.0.0.0/0"]
 }
 
 resource "google_compute_instance" "vm-terraform" {
@@ -66,7 +66,7 @@ resource "google_compute_instance" "vm-terraform" {
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-11"
-      size = "15"
+      size  = "15"
       labels = {
         my_label = "value"
       }
@@ -74,7 +74,7 @@ resource "google_compute_instance" "vm-terraform" {
   }
 
   network_interface {
-    network = google_compute_network.vpc_1.self_link
+    network    = google_compute_network.vpc_1.self_link
     subnetwork = google_compute_subnetwork.subnet_1.self_link
 
     access_config {
@@ -83,7 +83,7 @@ resource "google_compute_instance" "vm-terraform" {
   }
 
   network_interface {
-    network = google_compute_network.vpc_2.self_link
+    network    = google_compute_network.vpc_2.self_link
     subnetwork = google_compute_subnetwork.subnet_2.self_link
 
     # No External access for second interface

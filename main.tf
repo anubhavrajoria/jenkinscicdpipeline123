@@ -1,10 +1,10 @@
 resource "google_compute_network" "vpc_1" {
-  name                    = "vpc-bca"
+  name                    = "vpc-bbb"
   auto_create_subnetworks = false
 }
 
 resource "google_compute_network" "vpc_2" {
-  name                    = "vpc-abc"
+  name                    = "vpc-bba"
   auto_create_subnetworks = false
 }
 

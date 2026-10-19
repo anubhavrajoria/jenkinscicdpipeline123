@@ -65,7 +65,7 @@ resource "google_compute_instance" "vm-terraform" {
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
+      image = "projects/ubuntu-os-cloud/global/images/ubuntu-2404-noble-amd64-v20251217"
       size  = "15"
       labels = {
         my_label = "value"
